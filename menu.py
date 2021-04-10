@@ -12,8 +12,6 @@ from base import blitText
 
 from base import loadImage
 
-import music
-
 import gettext
 
 # Generic functions ###
@@ -34,17 +32,6 @@ class Menu(engine.State):
 		self.sourceforgeLogo = pygame.image.load(os.path.join("images","sflogo.png")).convert()
 		self.pythonLogo = pygame.image.load(os.path.join("images","PythonPowered.gif")).convert()
 		self.zones = []
-			
-		#if self.main.sound == True:
-			#for music in self.main.playingMusic.keys():
-				#if music != "menu":
-					#if self.main.playingMusic[music] == True:
-						#pygame.mixer.music.fadeout(1000)
-						#self.main.playingMusic[music] = False
-			#if self.main.playingMusic["menu"] != True:
-				#self.main.playingMusic["menu"] = True
-				#pygame.mixer.music.load(os.path.join("sounds","bgmusic.ogg"))
-				#pygame.mixer.music.play(-1)
 		
 	def paint(self,screen):
 		screen.fill((255,255,255))

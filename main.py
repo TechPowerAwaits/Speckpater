@@ -9,7 +9,6 @@ try:
 	from pygame.locals import *
 	from pygame import mixer
 	from pygame.mixer import music
-	#from music import Music
 	from pgu import timer
 	from pgu import engine
 
@@ -25,7 +24,7 @@ from base import loadGame
 import basegamelevel
 import menu
 import music
-from sound import DaveSound
+from sounds import DaveSound
 
 from base import initLevel, initCustomLevel
 from base import testLevelname
@@ -54,18 +53,8 @@ class Main(engine.Game):
 		
 
 		self.screen = pygame.display.set_mode((base.SCREEN_WIDTH, base.SCREEN_HEIGHT),self.screenMode)
-##		pygame.font.init()
-		#try:
-			#pygame.mixer.init()
-			#base.SOUND = True
-			#self.sound = True
-		#except:
-			#base.SOUND = False
-			#self.sound = False
-		
 		base.SOUND = True
 		self.sound = base.SOUND
-		#print base.SOUND, base.MUSIC_LOADED
 		pygame.display.set_caption("Speckpater %s" % base.VERSION)
 		pygame.display.set_icon(pygame.image.load(os.path.join("images","bible.png")))
 		self.music = 1
@@ -127,9 +116,6 @@ try:
 	if base.Testing == True:
 		main = Main()
 		base.SOUND = True
-		#music.LoadMusic()
-		#print base.SOUND, base.MUSIC_LOADED
-		#main.run(menu.Menu(main)) #Coment this out just incase we want to load main menu without intro.
 		main.run(menu.Intro(main))
 	else:
 		main = Main()
