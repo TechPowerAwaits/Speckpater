@@ -12,7 +12,7 @@ from pgu import engine
 from pgu import timer
 from base import saveGame
 from base import loadGame
-from sound import DaveSound
+from sounds import DaveSound
 from base import initLevel, initCustomLevel
 from base import testLevelname
 

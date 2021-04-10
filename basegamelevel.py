@@ -243,7 +243,6 @@ class GameLevel(tilevid.Tilevid):
         def exit_block(g, t, a):
         
                 def exit_hit(g, s, a):
-                        #base.sound.Play("LevelExit");
                         g.OnExit()
                 
                 s = tilevid.Sprite(g.images['blank'],t.rect)
@@ -294,7 +293,6 @@ class GameLevel(tilevid.Tilevid):
                 
         def bananas_block(g, t, a):
                 def pickup(g, s, a):
-                        #base.sound.Play("");
                         g.player.onPickupBanana(g,3)
                         g.sprites.remove(s)
                 
