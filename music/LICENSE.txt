@@ -1,0 +1,45 @@
+* bgmusic.ogg
+Title: enigmatic adventure.wav
+Author: X3nus [User on Freesound]
+SPDX-License-Identifier: CC-BY-3.0
+URL: https://freesound.org/s/450736/
+Modification: Converted to OGG using VLC
+
+* jungle.ogg
+Title: Mist Forest
+Author: Migfus20 [User on Freesound]
+SPDX-License-Identifier: CC-BY-3.0
+URL: https://freesound.org/s/560444/
+Modification: Converted to OGG using VLC
+
+* cave.ogg
+Title: Crystal Cave + Mysterious Ambience (seamless loop)
+Author: cynicmusic [User on OpenGameArt]
+Submitter: congusbongus [User on OpenGameArt]
+Description/Credit:
+    This is a seamless looping music, derived by stitching together these two tracks:
+    
+    http://opengameart.org/content/crystal-cave-song18
+    
+    http://opengameart.org/content/mysterious-ambience-song21
+    
+    Both by http://opengameart.org/users/cynicmusic and from the http://pixelsphere.org/ game.
+SPDX-License-Identifier: CC-BY-3.0 OR CC-BY-SA-3.0 OR GPL-3.0-only
+URL: https://opengameart.org/content/crystal-cave-mysterious-ambience-seamless-loop
+Modification: None
+
+* temple.ogg
+Title: Mysterious Ethereal Song
+Author: theojt [User on Freesound]
+SPDX-License-Identifier: CC0-1.0
+URL: https://freesound.org/s/510918/
+Modification: Converted to OGG using VLC
+
+* mountain.ogg
+Title: Mountain in Sea
+Author: szegvari [User on Freesound]
+Credit: Music Sheet AI generated: Payne, Christine. "MuseNet." OpenAI, 25 Apr. 2019, openai.com/blog/musenet
+SPDX-License-Identifier: CC0-1.0
+URL: https://freesound.org/s/565053/
+Modification: Converted to OGG using VLC
+
