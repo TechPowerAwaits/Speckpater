@@ -11,17 +11,19 @@ from pgu import gui
 
 pygame.mixer.init()
 global Music
-Music = {"MenuMusic":None, "JungleMusic":None, "CaveMusic":None, "MountainMusic":None, "TempleMusic":None}
+Music = {"Menu":None, "Jungle":None, "Cave":None, "JumpJungle":None, "Mountain":None, "Temple":None, "Finale":None}
 
 
 def LoadMusic():
 	if base.SOUND == True:
 		if base.MUSIC_LOADED == False:
-			Music["MenuMusic"] = pygame.mixer.Sound(os.path.join(fdir, 'bgmusic.ogg'))
-			Music["JungleMusic"] = pygame.mixer.Sound(os.path.join(fdir, 'jungle.ogg'))
-			Music["CaveMusic"] = pygame.mixer.Sound(os.path.join(fdir, 'cave.ogg'))
-			Music["MountainMusic"] = pygame.mixer.Sound(os.path.join(fdir, 'mountain.ogg'))
-			Music["TempleMusic"] = pygame.mixer.Sound(os.path.join(fdir, 'temple.ogg'))
+			Music["Menu"] = pygame.mixer.Sound(os.path.join(fdir, 'bgmusic.ogg'))
+			Music["Jungle"] = pygame.mixer.Sound(os.path.join(fdir, 'jungle.ogg'))
+			Music["Cave"] = pygame.mixer.Sound(os.path.join(fdir, 'cave.ogg'))
+			Music["JumpJungle"] = pygame.mixer.Sound(os.path.join(fdir, 'jungle_jumping.ogg'))
+			Music["Mountain"] = pygame.mixer.Sound(os.path.join(fdir, 'mountain.ogg'))
+			Music["Temple"] = pygame.mixer.Sound(os.path.join(fdir, 'temple.ogg'))
+			Music["Finale"] = pygame.mixer.Sound(os.path.join(fdir, 'finale.ogg'))
 			base.MUSIC_LOADED = True
 
 def Play(category):

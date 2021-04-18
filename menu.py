@@ -102,7 +102,7 @@ class Menu(engine.State):
 			if base.PLAYING_MENU_MUSIC == False:
 				for item in music.Music:
 					music.Stop(item)
-				music.Play("MenuMusic")
+				music.Play("Menu")
 				base.PLAYING_MENU_MUSIC = True
 ##		gameVariables = self.main.gameVariables
 		
@@ -309,7 +309,6 @@ class Options(engine.State):
 				else:
 					pygame.mixer.init()
 					base.SOUND = True
-					#base.PLAYING_MENU_MUSIC = True
 				
 			if val == "fullscreen/windowed mode":
 				# save changes

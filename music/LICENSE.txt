@@ -28,6 +28,14 @@ SPDX-License-Identifier: CC-BY-3.0 OR CC-BY-SA-3.0 OR GPL-3.0-only
 URL: https://opengameart.org/content/crystal-cave-mysterious-ambience-seamless-loop
 Modification: None
 
+* jungle_jumping.ogg
+Title: Jungle Jumpin'
+Author: Scrabbit [User on OpenGameArt]
+Credit: "Jungle Jumpin'" by Scott Elliott
+SPDX-License-Identifier: CC-BY-4.0
+URL: https://opengameart.org/content/jungle-jumpin
+Modification: Converted to OGG using VLC
+
 * temple.ogg
 Title: Mysterious Ethereal Song
 Author: theojt [User on Freesound]
@@ -43,3 +51,9 @@ SPDX-License-Identifier: CC0-1.0
 URL: https://freesound.org/s/565053/
 Modification: Converted to OGG using VLC
 
+* finale.ogg
+Title: Epic at the Jungle
+Author: Indieteur [User on OpenGameArt]
+SPDX-License-Identifier: CC0-1.0
+URL: https://opengameart.org/content/epic-at-the-jungle
+Modification: WAV converted to OGG using VLC
