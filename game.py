@@ -88,33 +88,61 @@ class Game(engine.State):
 						raise base.ResourceException("Error loading level " + levelName + "!")
 				
 				if base.SOUND == True:
-					if self.data["chapter"] == 5:
-						if self.playing != "MountainMusic":
+					if self.data["chapter"] == 1:
+						if self.playing != "Jungle":
 							for item in music.Music:
 								music.Stop(item)
-							music.Play("MountainMusic")
-							self.playing = "MountainMusic"
+							music.Play("Jungle")
+							self.playing = "Jungle"
 					
-					if self.data["chapter"] == 4:
-						if self.playing != "TempleMusic":
+					elif self.data["chapter"] == 2:
+						if self.playing != "Cave":
 							for item in music.Music:
 								music.Stop(item)
-							music.Play("TempleMusic")
-							self.playing = "TempleMusic"
-							
-					if self.data["chapter"] == 2:
-						if self.playing != "CaveMusic":
+							music.Play("Cave")
+							self.playing = "Cave"
+					
+					elif self.data["chapter"] == 3:
+						if self.data["level"] == 4:
+							if self.playing != "Jungle":
+								for item in music.Music:
+									music.Stop(item)
+								music.Play("Jungle")
+								self.playing = "Jungle"
+						else:
+							if self.playing != "JumpJungle":
+								for item in music.Music:
+									music.Stop(item)
+								music.Play("JumpJungle")
+								self.playing = "JumpJungle"
+					
+					elif self.data["chapter"] == 4:
+						if self.data["level"] == 1:
+							if self.playing != "Jungle":
+								for item in music.Music:
+									music.Stop(item)
+								music.Play("Jungle")
+								self.playing = "Jungle"
+						else:
+							if self.playing != "Temple":
+								for item in music.Music:
+									music.Stop(item)
+								music.Play("Temple")
+								self.playing = "Temple"
+					
+					elif self.data["chapter"] == 5:
+						if self.playing != "Mountain":
 							for item in music.Music:
 								music.Stop(item)
-							music.Play("CaveMusic")
-							self.playing = "CaveMusic"
-	
-					if (((self.data["chapter"] == 1) or (self.data["chapter"] == 3) or (self.data["chapter"] == 6))):
-						if self.playing != "JungleMusic":
+							music.Play("Mountain")
+							self.playing = "Mountain"
+					
+					else:
+						if self.playing != "Finale":
 							for item in music.Music:
 								music.Stop(item)
-							music.Play("JungleMusic")
-							self.playing = "JungleMusic"
+							music.Play("Finale")
+							self.playing = "Finale"
 			
 			chapter = int(self.data['chapter'])
 			print "Loaded level", levelName
