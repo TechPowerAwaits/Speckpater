@@ -10,7 +10,7 @@ class GameLevel(gamelevel1_x.GameLevel):
 
 	def OnRunSpecial1(self, g, t, a):
 		def trigger(g, s, a):
-			g.hud.show_dialog(_("If you see an exclamation mark above Dave's head, press the M key to see what he wants to say."))
+			g.hud.show_dialog(A_("If you see an exclamation mark above Dave's head, press the M key to see what he wants to say."))
 			s.agroups = None	
 		self.addTriggerCallback(t.rect,trigger)
 		
@@ -18,7 +18,7 @@ class GameLevel(gamelevel1_x.GameLevel):
 
 	def OnRunSpecial2(self, g, t, a):
 		def trigger(g, s, a):
-			g.hud.add_pending_dialog(_("""\"Tip: You can press the Space bar key to jump.\""""))
+			g.hud.add_pending_dialog(A_("""\"Tip: You can press the Space bar key to jump.\""""))
 			s.agroups = None
 		self.addTriggerCallback(t.rect,trigger)
 

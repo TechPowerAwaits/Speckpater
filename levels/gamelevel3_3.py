@@ -29,7 +29,7 @@ class GameLevel(gamelevel3_x.GameLevel, Tileset):
 		self.sprites.append(s)
 		
 	def OnStart(self):
-		self.hud.show_dialog(_("""This is the northern bridge. It is very old, but it is not in as bad a condition as the southern bridge.
+		self.hud.show_dialog(A_("""This is the northern bridge. It is very old, but it is not in as bad a condition as the southern bridge.
 \tYou should use the northern bridge as much as possible."""))
 	
 	def OnRunSpecial1(self, g, t, a):
@@ -77,7 +77,7 @@ class GameLevel(gamelevel3_x.GameLevel, Tileset):
 	def OnRunSpecial2(self, g, t, a):
 		def special_hit2(g, s, a):
 			if self.useSouthernBridge == False:
-				self.hud.show_dialog(_("""Well, it looks like you'll have to use the southern bridge... or what's left of it."""))
+				self.hud.show_dialog(A_("""Well, it looks like you'll have to use the southern bridge... or what's left of it."""))
 				self.useSouthernBridge = True
 			s.agroups = None
 		s = tilevid.Sprite(g.images['blank'],t.rect)
@@ -116,7 +116,7 @@ class GameLevel(gamelevel3_x.GameLevel, Tileset):
 		
 	def OnRunSpecial5(self, g, t, a):
 		def special_hit5(g, s, a):
-			self.hud.show_dialog(_("""This is the southern bridge. Be careful, it's not in good condition."""))			
+			self.hud.show_dialog(A_("""This is the southern bridge. Be careful, it's not in good condition."""))			
 			s.agroups = None
 		s = tilevid.Sprite(g.images['blank'],t.rect)
 		g.sprites.append(s)
@@ -125,7 +125,7 @@ class GameLevel(gamelevel3_x.GameLevel, Tileset):
 		
 	def OnRunSpecial6(self, g, t, a):
 		def special_hit6(g, s, a):
-			self.hud.show_dialog(_("""Step back!! The southern bridge is collapsing!
+			self.hud.show_dialog(A_("""Step back!! The southern bridge is collapsing!
 \tHint: Quickly! Run to the ledge on the far left. Get as close to the edge as you can."""))
 			self.fallingBridge((4224, 992), 5)
 			self.fallingBridge((4288, 992), 5)

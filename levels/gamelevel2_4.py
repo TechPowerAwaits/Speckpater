@@ -8,11 +8,11 @@ class GameLevel(gamelevel2_x.GameLevel):
 	levelFileName = "level2_4"
 	
 	def OnStart(self):
-		self.hud.show_dialog(_("\"Phew, is it just me or\nis it getting warm in here?\""));
+		self.hud.show_dialog(A_("\"Phew, is it just me or\nis it getting warm in here?\""));
 
 	def OnRunSpecial1(self, g, t, a):
 		def special_hit(g, s, a):
-			g.hud.add_pending_dialog(_("\"Well that looks like the exit, but the path's caved in!\n\tI pray I can find another way out...\""));
+			g.hud.add_pending_dialog(A_("\"Well that looks like the exit, but the path's caved in!\n\tI pray I can find another way out...\""));
 			s.agroups = None
 		s = tilevid.Sprite(g.images['blank'],t.rect)
 		g.sprites.append(s)
@@ -21,7 +21,7 @@ class GameLevel(gamelevel2_x.GameLevel):
 
 	def OnRunSpecial2(self, g, t, a):
 		def special_hit(g, s, a):
-			g.hud.add_pending_dialog(_("The sign reads:\n\t\"CAUTION: Lava flows\""));
+			g.hud.add_pending_dialog(A_("The sign reads:\n\t\"CAUTION: Lava flows\""));
 			s.agroups = None
 		s = tilevid.Sprite(g.images['blank'],t.rect)
 		g.sprites.append(s)
@@ -30,7 +30,7 @@ class GameLevel(gamelevel2_x.GameLevel):
 
 	def OnRunSpecial3(self, g, t, a):
 		def special_hit(g, s, a):
-			g.hud.add_pending_dialog(_("The sign reads:\n\t\"Mine exit\""));
+			g.hud.add_pending_dialog(A_("The sign reads:\n\t\"Mine exit\""));
 			s.agroups = None
 		s = tilevid.Sprite(g.images['blank'],t.rect)
 		g.sprites.append(s)
@@ -38,5 +38,5 @@ class GameLevel(gamelevel2_x.GameLevel):
 		s.hit = special_hit
 
 	def OnExit(self):
-		self.hud.show_dialog(_("\"Fresh air!\""));
+		self.hud.show_dialog(A_("\"Fresh air!\""));
 		self.gotoNextLevel()

@@ -20,7 +20,7 @@ class GameLevel(gamelevel3_x.GameLevel, Tileset):
 	
 	def OnRunSpecial1(self, g, t, a):
 		def special_hit1(g, s, a):
-			g.hud.add_pending_dialog(_("""Hint: This mound is too high for Dave to jump up to. Why don't you jump on the other mound to the left and then
+			g.hud.add_pending_dialog(A_("""Hint: This mound is too high for Dave to jump up to. Why don't you jump on the other mound to the left and then
 \tjump on the tree branch and onto the mound from there?"""))
 			s.agroups = None
 		s = tilevid.Sprite(g.images['blank'],t.rect)
@@ -30,7 +30,7 @@ class GameLevel(gamelevel3_x.GameLevel, Tileset):
 		
 	def OnRunSpecial2(self, g, t, a):
 		def special_hit2(g, s, a):
-			g.hud.add_pending_dialog(_("""\"Hrm. Maybe I should jump on that tree branch to the right so that I don't have to cross paths with this jaguar.\""""))
+			g.hud.add_pending_dialog(A_("""\"Hrm. Maybe I should jump on that tree branch to the right so that I don't have to cross paths with this jaguar.\""""))
 			s.agroups = None
 		s = tilevid.Sprite(g.images['blank'],t.rect)
 		g.sprites.append(s)
@@ -41,7 +41,7 @@ class GameLevel(gamelevel3_x.GameLevel, Tileset):
 	def OnRunSpecial3(self, g, t, a):
 		def special_hit3(g, s, a):
 			self.disapearingBranch(g)
-			self.hud.show_dialog(_("""*CRACK!* Oops! This branch wasn't strong enough to hold Dave!!"""))
+			self.hud.show_dialog(A_("""*CRACK!* Oops! This branch wasn't strong enough to hold Dave!!"""))
 			s.agroups = None
 		s = tilevid.Sprite(g.images['blank'],t.rect)
 		g.sprites.append(s)
@@ -55,7 +55,7 @@ class GameLevel(gamelevel3_x.GameLevel, Tileset):
 		
 	def OnRunSpecial5(self, g, t, a):
 		def special_hit5(g, s, a):
-			self.hud.show_dialog(_("""A tree snake! Maybe you should climb that other vine."""))		
+			self.hud.show_dialog(A_("""A tree snake! Maybe you should climb that other vine."""))		
 			s.agroups = None
 		s = tilevid.Sprite(g.images['blank'],t.rect)
 		g.sprites.append(s)
