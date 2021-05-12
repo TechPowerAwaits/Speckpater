@@ -10,28 +10,34 @@ from pgu import engine
 from pgu import gui
 
 pygame.mixer.init()
-global Music
-Music = {"Menu":None, "Jungle":None, "Cave":None, "JumpJungle":None, "Mountain":None, "Temple":None, "Finale":None}
-
+alias = {}
+current = None
+MUSIC_LOADED = False
+enabled = False
 
 def LoadMusic():
-	if base.SOUND == True:
-		if base.MUSIC_LOADED == False:
-			Music["Menu"] = pygame.mixer.Sound(os.path.join(fdir, 'bgmusic.ogg'))
-			Music["Jungle"] = pygame.mixer.Sound(os.path.join(fdir, 'jungle.ogg'))
-			Music["Cave"] = pygame.mixer.Sound(os.path.join(fdir, 'cave.ogg'))
-			Music["JumpJungle"] = pygame.mixer.Sound(os.path.join(fdir, 'jungle_jumping.ogg'))
-			Music["Mountain"] = pygame.mixer.Sound(os.path.join(fdir, 'mountain.ogg'))
-			Music["Temple"] = pygame.mixer.Sound(os.path.join(fdir, 'temple.ogg'))
-			Music["Finale"] = pygame.mixer.Sound(os.path.join(fdir, 'finale.ogg'))
-			base.MUSIC_LOADED = True
+	global alias
+	global current
+	global MUSIC_LOADED
+	if enabled == True:
+		if MUSIC_LOADED == False:
+			alias["Menu"] = os.path.join(fdir, 'bgmusic.ogg')
+			alias["Jungle"] = os.path.join(fdir, 'jungle.ogg')
+			alias["Cave"] = os.path.join(fdir, 'cave.ogg')
+			alias["JumpJungle"] = os.path.join(fdir, 'jungle_jumping.ogg')
+			alias["Mountain"] = os.path.join(fdir, 'mountain.ogg')
+			alias["Temple"] = os.path.join(fdir, 'temple.ogg')
+			alias["Finale"] = os.path.join(fdir, 'finale.ogg')
+			MUSIC_LOADED = True
 
-def Play(category):
-	if base.SOUND == True:
-		if base.MUSIC_LOADED == True:
-				Music[category].play(-1)
-
-def Stop(category):
-	if base.SOUND == True:
-		if base.MUSIC_LOADED == True:
-				Music[category].fadeout(1800)
+def Play(song_alias):
+	global alias
+	global current
+	global MUSIC_LOADED
+	if enabled == True:
+		if MUSIC_LOADED == True:
+			if pygame.mixer.music.get_busy():
+				pygame.mixer.music.fadeout(1800)
+			pygame.mixer.music.load(alias[song_alias])
+			pygame.mixer.music.play(-1)
+			current = song_alias

@@ -2,9 +2,10 @@ import os
 from getpass import getuser
 
 import pygame, pygame.font, pygame.image
-import pygame
 from pygame.locals import *
 import levelfile
+import music
+import sounds
 
 #remember to change the version number in bibledave.nsi
 VERSION = "0.9"
@@ -52,8 +53,6 @@ NEED_MORE_BIBLES = True
 DONT_LOAD_LAST_LEVEL = False
 DATA=None
 SOUND = None
-MUSIC_LOADED = False
-PLAYING_MENU_MUSIC = False
 
 FONT_FILENAME = "SF Comic Script.ttf"
 HELP_OR_BUGS = """For help and bug reporting join or go to:
@@ -67,8 +66,6 @@ numBananas = 0
 #joystick variables
 has_joy = False
 joy = None
-is_playing_music = False
-is_playing_jungle = False
 path = os.path.join(os.path.expanduser("~"),'.bibledave')
 opath = os.path.join(os.path.expanduser("~"),'.bibledaveo')
 print "The configuration file is located at:", path
@@ -160,6 +157,11 @@ def setSoundsEnabled(settings,notUsed):
 		soundsEnabled = int(not soundsEnabled)
 		enableSounds(soundsEnabled)
 		settings['sounds'] = soundsEnabled
+
+def setMusicEnabled(settings, notused):
+	musicEnabled = int(not music.enabled)
+	enableMusic(musicEnabled)
+	settings['music'] = musicEnabled
 		
 def setFullScreenMode(settings,notUsed):
 		isFullScreen = settings['fullScreen']
@@ -176,7 +178,8 @@ gameSettings = [
 ("lang",A_("Language"),curLang,setLanguage),
 ("bpp",A_("Color depth"),32,setColorDepth),("gamma",A_("Gamma correction"),1.0,setGamma),
 # use boolean here for default value so that we know how to display it in the game settings menu
-("sounds",A_("Sounds enabled"),True,setSoundsEnabled), 
+("sounds",A_("Sounds enabled"),True,setSoundsEnabled),
+("music",A_("Music enabled"), True, setMusicEnabled),
 ("fullScreen",A_("Full screen"),True,setFullScreenMode)]
 		
 
@@ -342,8 +345,10 @@ def setScreenMode(flags,bpp):
 		
 		
 def enableSounds(enable):
-		global soundsEnabled
-		soundsEnabled = enable
+		sounds.enabled = enable
+
+def enableMusic(enable):
+	music.enabled = enable
 
 
 gameDifficulty = DIFFICULTY_MEDIUM
