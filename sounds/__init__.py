@@ -6,6 +6,9 @@ import sys
 sys.path.append(parent_fdir)
 import base
 
+global enabled
+enabled = True
+
 class DaveSound:
 	def __init__(self):
 		pygame.mixer.init(22050,8,1,2048)
@@ -17,7 +20,7 @@ class DaveSound:
 
 	def Play(self, soundName):
 
-		if not base.soundsEnabled: 
+		if not enabled: 
 			return
 		
 		if (not self.sounds.has_key(soundName)):

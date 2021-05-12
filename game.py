@@ -42,10 +42,6 @@ class Game(engine.State):
 			print "loading the fallLesson variable"
 			self.main.gameVariables['fallLesson'] = base.getSaveGameVar(self.data,'fallLesson',False)
 			self.main.gameVariables['firstbanana'] = base.getSaveGameVar(self.data,'firstbanana',False)
-			
-		self.playing = None
-##		pygame.mixer.music.load(os.path.join("data","bgmusic2.ogg"))
-##		pygame.mixer.music.play(-1)
 
 	def init(self):
 		if base.Testing:
@@ -89,60 +85,36 @@ class Game(engine.State):
 				
 				if base.SOUND == True:
 					if self.data["chapter"] == 1:
-						if self.playing != "Jungle":
-							for item in music.Music:
-								music.Stop(item)
+						if music.current != "Jungle":
 							music.Play("Jungle")
-							self.playing = "Jungle"
 					
 					elif self.data["chapter"] == 2:
-						if self.playing != "Cave":
-							for item in music.Music:
-								music.Stop(item)
+						if music.current != "Cave":
 							music.Play("Cave")
-							self.playing = "Cave"
 					
 					elif self.data["chapter"] == 3:
 						if self.data["level"] == 4:
-							if self.playing != "Jungle":
-								for item in music.Music:
-									music.Stop(item)
+							if music.current != "Jungle":
 								music.Play("Jungle")
-								self.playing = "Jungle"
 						else:
-							if self.playing != "JumpJungle":
-								for item in music.Music:
-									music.Stop(item)
+							if music.current != "JumpJungle":
 								music.Play("JumpJungle")
-								self.playing = "JumpJungle"
 					
 					elif self.data["chapter"] == 4:
 						if self.data["level"] == 1:
-							if self.playing != "Jungle":
-								for item in music.Music:
-									music.Stop(item)
+							if music.current != "Jungle":
 								music.Play("Jungle")
-								self.playing = "Jungle"
 						else:
-							if self.playing != "Temple":
-								for item in music.Music:
-									music.Stop(item)
+							if music.current != "Temple":
 								music.Play("Temple")
-								self.playing = "Temple"
 					
 					elif self.data["chapter"] == 5:
-						if self.playing != "Mountain":
-							for item in music.Music:
-								music.Stop(item)
+						if music.current != "Mountain":
 							music.Play("Mountain")
-							self.playing = "Mountain"
 					
 					else:
-						if self.playing != "Finale":
-							for item in music.Music:
-								music.Stop(item)
+						if music.current != "Finale":
 							music.Play("Finale")
-							self.playing = "Finale"
 			
 			chapter = int(self.data['chapter'])
 			print "Loaded level", levelName

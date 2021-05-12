@@ -1,6 +1,7 @@
 import pygame
 import os
 import music
+import sounds
 
 from pygame.locals import *
 from pgu import engine
@@ -98,13 +99,9 @@ class Menu(engine.State):
 		pygame.display.flip()
 		
 	def event(self,e):
-		if base.SOUND:
-			if base.PLAYING_MENU_MUSIC == False:
-				for item in music.Music:
-					music.Stop(item)
+		if music.enabled:
+			if music.current != "Menu":
 				music.Play("Menu")
-				base.PLAYING_MENU_MUSIC = True
-##		gameVariables = self.main.gameVariables
 		
 		if e.type is KEYDOWN and e.key == K_UP:
 			self.cur = (self.cur-1+len(self.menu))%len(self.menu)
@@ -201,7 +198,7 @@ class Options(engine.State):
 	def init(self):
 		self.quit = False
 		self.cur = 0
-		self.menu = ["fullscreen/windowed mode", "sounds and music on/off", "", "back"]
+		self.menu = ["fullscreen/windowed mode", "music on/off", "sounds on/off", "", "back"]
 		self.bkgr = pygame.image.load(os.path.join("images","speckpater_front.png")).convert()
 		
 		self.sourceforgeLogo = pygame.image.load(os.path.join("images","sflogo.png")).convert()
@@ -301,14 +298,16 @@ class Options(engine.State):
 			
 			if val == "back":
 				return Menu(self.main)
-			if val == "sounds and music on/off":
-				if base.SOUND:
-					pygame.mixer.quit()
-					base.SOUND = False
-					base.PLAYING_MENU_MUSIC = False
+			if val == "music on/off":
+				if music.enabled:
+					music.enabled = False
 				else:
-					pygame.mixer.init()
-					base.SOUND = True
+					music.enabled = True
+			if val == "sounds on/off":
+				if sounds.enabled:
+					sounds.enabled = False
+				else:
+					sounds.enabled = True
 				
 			if val == "fullscreen/windowed mode":
 				# save changes

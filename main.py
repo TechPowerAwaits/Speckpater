@@ -63,6 +63,7 @@ class Main(engine.Game):
 
 		base.setScreenMode(self.screenMode,int(self.settings['bpp'])) #Get bits per pixel (colour depth) mode from settings file and set it
 		base.enableSounds(int(self.settings['sounds'])) #Get sounds from the settings file and enable them
+		base.enableMusic(int(self.settings['music'])) #Get music from the settings file and enable them
 		
 		gamma = float(self.settings['gamma']) #Get gama settings from settings file
 		pygame.display.set_gamma(gamma,gamma,gamma) #Set gamma
@@ -92,9 +93,11 @@ class Main(engine.Game):
 				if base.SOUND:
 					pygame.mixer.quit()
 					base.SOUND = False
+					music.enabled = False
 				else:
 					pygame.mixer.init()
 					base.SOUND = True
+					music.enabled = True
 				return 1
 		
 			#if e.key == K_F10:
