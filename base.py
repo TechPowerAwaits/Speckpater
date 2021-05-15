@@ -1,7 +1,7 @@
 import os
 from getpass import getuser
 
-import pygame, pygame.font, pygame.image
+import pygame, pygame.image
 import pygame
 from pygame.locals import *
 import levelfile
@@ -55,7 +55,6 @@ SOUND = None
 MUSIC_LOADED = False
 PLAYING_MENU_MUSIC = False
 
-FONT_FILENAME = "SF Comic Script.ttf"
 HELP_OR_BUGS = """For help and bug reporting join or go to:
 \thttp://sourceforge.net/projects/bibledave/
 \thttp://christiandevs.com"""
@@ -274,49 +273,7 @@ def loadGame():
 		f.close()
 
 	return data
-				
 
-def blitText(size,color, text, pos, shaOff = None):
-		font = pygame.font.Font(FONT_FILENAME, size)
-		
-		if shaOff != None:
-				txt = font.render(text, True, (0,0,0))
-				screen.blit(txt, (pos[0] + shaOff[0],pos[1] + shaOff[1]))
-		
-		txt = font.render(text, True, color)
-		screen.blit(txt, pos)
-		
-
-
-def drawTextColored(surface, fontsize, message, location, color):
-		font = pygame.font.Font(FONT_FILENAME, fontsize)
-		fontcolor = color
-		orig = font.render(message, 1, fontcolor)
-
-##		shadowcolor = 100, 100, 100
-##		offset = 2
-##		orig = orig.convert()
-##		size = orig.get_width() + offset, orig.get_height() + offset
-##		img = pygame.Surface(size, 16)
-##		img = img.convert()
-##		img.set_colorkey((0, 0, 0))
-##		orig.set_palette_at(1, shadowcolor)
-##		img.blit(orig, (offset, offset))
-##		orig.set_palette_at(1, fontcolor)
-##		img.blit(orig, (0, 0))
-##		surface.blit(img, location)
-
-		surface.blit(orig, location)
-
-def drawText(surface, fontsize, message, location):
-    drawTextColored(surface, fontsize, message, location, (191, 191, 191))
-
-# This function is used by the HUD to determine when a line is too long, and when it should split.
-def getTextRenderWidth(fontsize, message):
-    font = pygame.font.Font(FONT_FILENAME, fontsize)    
-    txt = font.render(message, True, (0,0,0))
-    return txt.get_width()
-	
 # ------------------------------------------------------- #
 #	 Loads an image and converts it to the right bit depth	#
 # ------------------------------------------------------- #

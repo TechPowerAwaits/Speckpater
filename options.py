@@ -12,6 +12,7 @@ from base import blitText
 from base import loadImage
 
 import gettext
+import fonts
 
 # Generic functions ###
 class Language(engine.State):
@@ -35,9 +36,8 @@ class Language(engine.State):
 		
 		bg = 0,0,0
 		
-		fnt = pygame.font.Font("BD_Cartoon_Shout.ttf",26)
+		ctrl_font = fonts.get("CONTROL_CAPTION")
 		
-##		x,y = 0,300
 		y = 250
 		fg = (0xaa,0x00,0x00)
 		score = 0
@@ -48,8 +48,8 @@ class Language(engine.State):
 			c = 0,150,100
 			if n == self.cur: 
 				c = 250,250,250
-			img = fnt.render(val,1,c)
-			img2 = fnt.render(val,1,bg)
+			img = ctrl_font.render(val,1,c)
+			img2 = ctrl_font.render(val,1,bg)
 			x = (base.SCREEN_WIDTH-img.get_width())/2
 			screen.blit(img2,(x+2,y+2))
 			screen.blit(img,(x,y))
@@ -57,30 +57,27 @@ class Language(engine.State):
 			y += 40
 			n += 1
 			
-		fnt = pygame.font.Font("BD_Cartoon_Shout.ttf",10)
+		copr_font = fonts.get("COPR")
 		y = 550
 		c = 49, 165, 23
 		for line in ["This game comes with ABSOLUTELY NO WARRANTY. It is free software and",
 		"you are welcome to distribute it under the terms of the GNU General Public License.",
 		"(C) The Bible Dave Development Team"]:
-			img = fnt.render(line,1,c)
-			img2 = fnt.render(line,1,bg)
+			img = copr_font.render(line,1,c)
+			img2 = copr_font.render(line,1,bg)
 ##			x = (base.SCREEN_WIDTH-img.get_width())/2
 			x = 10
 			screen.blit(img2,(x+2,y+2))
 			screen.blit(img,(x,y))
 			y += 12
 			
-		
-		fnt = pygame.font.Font("BD_Cartoon_Shout.ttf",10)
 		x,y = 405,10
-##		c = 36, 45, 126
 		c = 0, 65, 226
 		bg = 0,0,0
 		
 		info = "Bible Dave - Christian Coders Community project v%s" % base.VERSION
-		img = fnt.render(info,1,c)
-		img2 = fnt.render(info,1,bg)
+		img = copr_font.render(info,1,c)
+		img2 = copr_font.render(info,1,bg)
 		screen.blit(img2,(x+1,y+1))
 		screen.blit(img,(x,y))
 

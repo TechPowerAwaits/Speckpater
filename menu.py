@@ -14,6 +14,8 @@ from base import loadImage
 
 import gettext
 
+import fonts
+
 # Generic functions ###
 class Menu(engine.State):
 	def __init__(self,main):
@@ -41,26 +43,19 @@ class Menu(engine.State):
 		screen.blit(self.sourceforgeLogo,(630,560))
 		screen.blit(self.pythonLogo,(730,560))
 		
-		bg = 0,0,0
+		button_font = font.get("MENU_BUTTON")
 		
-		fnt = pygame.font.Font("BD_Cartoon_Shout.ttf",26)
-		
-##		x,y = 0,300
 		y = 250
-		
-		fg = (0x00,0xaa,0x00)
-		score = 0
 		
 		self.zones = []
 		n = 0
 		for val in self.menu:
-			#mayo: below starting with C=, is where colour change from main , new game, continue etc
-			c = 119,90,254
-			#mayo: below starting with C=, is colour for roll over of main , new game, continue, etc
+			# color change when mouse over
 			if n == self.cur: 
-				c = 63,185,0
-			img = fnt.render(val,1,c)
-			img2 = fnt.render(val,1,bg)
+				img = button_font.render(val,1,colors.RICH_GREEN)
+			else:
+				img = button_font.render(val,1,colors.PALE_PURPLE)
+			img2 = button_font.render(val,1,colors.BLACK)
 			x = (base.SCREEN_WIDTH-img.get_width())/2
 			screen.blit(img2,(x+2,y+2))
 			screen.blit(img,(x,y))
@@ -68,30 +63,23 @@ class Menu(engine.State):
 			y += 40
 			n += 1
 			
-		fnt = pygame.font.Font("BD_Cartoon_Shout.ttf",10)
+		copr_font = font.get("COPR")
 		y = 550
-		c = 49, 165, 23
 		for line in ["This game comes with ABSOLUTELY NO WARRANTY. It is free software and",
 		"you are welcome to distribute it under the terms of the GNU General Public License.",
 		"(C) MAYO Development Team"]:
-			img = fnt.render(line,1,c)
-			img2 = fnt.render(line,1,bg)
-##			x = (base.SCREEN_WIDTH-img.get_width())/2
+			img = copr_font.render(line,1,colors.DARK_LIME_GREEN)
+			img2 = copr_font.render(line,1,colors.BLACK)
 			x = 10
 			screen.blit(img2,(x+2,y+2))
 			screen.blit(img,(x,y))
 			y += 12
 			
-		
-		fnt = pygame.font.Font("BD_Cartoon_Shout.ttf",10)
 		x,y = 405,10
-##		c = 36, 45, 126
-		c = 0,36,0
-		bg = 0,0,0
 		
 		info = "Speckpater - MAYO with thanks to the Christian Coders Community project v%s" % base.VERSION
-		img = fnt.render(info,1,c)
-		img2 = fnt.render(info,1,bg)
+		img = copr_font.render(info,1,colors.VERY_DARK_LIME_GREEN)
+		img2 = copr_font.render(info,1,colors.BLACK)
 		screen.blit(img2,(x+1,y+1))
 		screen.blit(img,(x,y))
 
@@ -167,28 +155,25 @@ class Intro(engine.State):
 		self.logo = pygame.image.load(os.path.join("images","speck-splash4.gif")).convert()
 		
 	def paint(self,screen):
-		#x = base.SCREEN_WIDTH/2
 		screen.fill((255,255,255))
 		img = self.logo
 		y = (base.SCREEN_HEIGHT-img.get_height())/2
 		
-		bg = 0,0,0
-		c = 0
-		fnt = pygame.font.Font(base.FONT_FILENAME, 26)
+		color = 0
+		s_intro_font = fonts.get("INTRO_SMALL")
 		
 		x = (base.SCREEN_WIDTH-img.get_width())/2
 		x2 = x + 80
 		y2 = y + 80
-##		screen.blit(img2,(x+2,y+2))
-		fnt2 = pygame.font.Font("BD_Cartoon_Shout.ttf",40)
-		while c <= 250:
-			img2 = fnt.render("Community Project",1,(c,c,c))
-			screen.fill(bg)
+		l_intro_font = fonts.get("INTRO_LARGE")
+		while color <= 250:
+			img2 = s_intro_font.render("Community Project",1,(color,color,color))
+			screen.fill(colors.BLACK)
 			screen.blit(img,(x,y))
 			screen.blit(img2,(x2,y2))
 			c += 5
 			
-			img3 = fnt2.render("Loading...",1,(250,250,250))
+			img3 = l_intro_font.render("Loading...",1,(colors.NEAR_WHITE))
 			screen.blit(img3, (300,500))
 			pygame.display.flip()
 				
@@ -217,22 +202,18 @@ class Options(engine.State):
 		screen.blit(self.sourceforgeLogo,(630,560))
 		screen.blit(self.pythonLogo,(730,560))
 		
-		bg = 0,0,0
-		
-		fnt = pygame.font.Font("BD_Cartoon_Shout.ttf",26)
+		setting_font = fonts.get("SETTINGS")
 
 		y = 250
-		fg = (0xaa,0x00,0x00)
-		score = 0
 		
 		self.zones = []
 		n = 0
 		for val in self.menu:
-			c = 119,90,254
-			if n == self.cur: 
-				c = 63,185,0
-			img = fnt.render(val,1,c)
-			img2 = fnt.render(val,1,bg)
+			if n == self.cur:
+				img = setting_font.render(val,1,colors.RICH_GREEN)
+			else:
+				img = setting_font.render(val,1,colors.colors.PALE_PURPLE)
+			img2 = setting_font.render(val,1,colors.BLACK)
 			x = (base.SCREEN_WIDTH-img.get_width())/2
 			screen.blit(img2,(x+2,y+2))
 			screen.blit(img,(x,y))
@@ -240,30 +221,23 @@ class Options(engine.State):
 			y += 40
 			n += 1
 			
-		fnt = pygame.font.Font("BD_Cartoon_Shout.ttf",10)
+		copr_font = fonts.get("COPR")
 		y = 550
-		c = 49, 165, 23
 		for line in ["This game comes with ABSOLUTELY NO WARRANTY. It is free software and",
 		"you are welcome to distribute it under the terms of the GNU General Public License.",
 		"(C) MAYO Development Team"]:
-			img = fnt.render(line,1,c)
-			img2 = fnt.render(line,1,bg)
-##			x = (base.SCREEN_WIDTH-img.get_width())/2
+			img = copr_font.render(line,1,colors.DARK_LIME_GREEN)
+			img2 = copr_font.render(line,1,colors.BLACK)
 			x = 10
 			screen.blit(img2,(x+2,y+2))
 			screen.blit(img,(x,y))
 			y += 12
-			
 		
-		fnt = pygame.font.Font("BD_Cartoon_Shout.ttf",10)
 		x,y = 405,10
-##		c = 36, 45, 126
-		c = 85,85,85
-		bg = 0,0,0
 		
 		info = "Speckpater - MAYO with thanks to the Christian Coders Community project v%s" % base.VERSION
-		img = fnt.render(info,1,c)
-		img2 = fnt.render(info,1,bg)
+		img = copr_font.render(info,1,colors.DARK_GRAY)
+		img2 = copr_font.render(info,1,colors.BLACK)
 		screen.blit(img2,(x+1,y+1))
 		screen.blit(img,(x,y))
 
@@ -358,22 +332,18 @@ class SetDifficulty(engine.State):
 		screen.blit(self.sourceforgeLogo,(630,560))
 		screen.blit(self.pythonLogo,(730,560))
 		
-		bg = 0,0,0
-		
-		fnt = pygame.font.Font("BD_Cartoon_Shout.ttf",26)
+		select_font = fonts.get("SELECTION")
 
 		y = 250
-		fg = (0xaa,0x00,0x00)
-		score = 0
 		
 		self.zones = []
 		n = 0
 		for val in self.menu:
-			c = 119,90,254
 			if n == self.cur: 
-				c = 63,185,0
-			img = fnt.render(val,1,c)
-			img2 = fnt.render(val,1,bg)
+				select_font.render(val,1,colors.RICH_GREEN)
+			else:
+				select_font.render(val,1,colors.PALE_PURPLE)
+			img2 = select_font.render(val,1,colors.BLACK)
 			x = (base.SCREEN_WIDTH-img.get_width())/2
 			screen.blit(img2,(x+2,y+2))
 			screen.blit(img,(x,y))
@@ -381,30 +351,23 @@ class SetDifficulty(engine.State):
 			y += 40
 			n += 1
 			
-		fnt = pygame.font.Font("BD_Cartoon_Shout.ttf",10)
+		copr_font = fonts.get("COPR")
 		y = 550
-		c = 49, 165, 23
 		for line in ["This game comes with ABSOLUTELY NO WARRANTY. It is free software and",
 		"you are welcome to distribute it under the terms of the GNU General Public License.",
 		"(C) MAYO Development Team"]:
-			img = fnt.render(line,1,c)
-			img2 = fnt.render(line,1,bg)
-##			x = (base.SCREEN_WIDTH-img.get_width())/2
+			img = copr_font.render(line,1,colors.DARK_LIME_GREEN)
+			img2 = copr_font.render(line,1,colors.BLACK)
 			x = 10
 			screen.blit(img2,(x+2,y+2))
 			screen.blit(img,(x,y))
 			y += 12
 			
-		
-		fnt = pygame.font.Font("BD_Cartoon_Shout.ttf",10)
 		x,y = 405,10
-##		c = 36, 45, 126
-		c = 85,85,85
-		bg = 0,0,0
 		
 		info = "Speckpater - MAYO with thanks to the Christian Coders Community project v%s" % base.VERSION
-		img = fnt.render(info,1,c)
-		img2 = fnt.render(info,1,bg)
+		img = copr_font.render(info,1,colors.DARK_GRAY)
+		img2 = copr_font.render(info,1,colors.BLACK)
 		screen.blit(img2,(x+1,y+1))
 		screen.blit(img,(x,y))
 
@@ -518,33 +481,27 @@ class About(engine.State):
 		screen.blit(self.sourceforgeLogo,(630,560))
 		screen.blit(self.pythonLogo,(730,560))
 		
-		bg = 0,0,0
-		
-		fnt = pygame.font.Font("BD_Cartoon_Shout.ttf",15)
-		fnt2 = pygame.font.Font("BD_Cartoon_Shout.ttf",26)
+		about_font = fonts.get("ABOUT")
+		ctrl_font = fonts.get("CONTROL_CAPTION")
 
 		y = 250
-		fg = (0xaa,0x00,0x00)
-		score = 0
 		
 		self.zones = []
 		n = 0
 		for val in self.aboutInfo:
-			c = 0,0,0
-			img = fnt.render(val,1,c)
+			img = about_font.render(val,1,colors.BLACK)
 			x = (base.SCREEN_WIDTH-img.get_width())/2
 			screen.blit(img,(x,y))
 			self.zones.append((n,pygame.Rect(x,y,img.get_width(),img.get_height())))
 			y += 15
-			#n += 1
 		
 		y1 = y + 30	
 		for val in self.menu:
-			c = 119,90,254
-			if n == self.cur: 
-				c = 63,185,0
-			img = fnt2.render(val,1,c)
-			img2 = fnt2.render(val,1,bg)
+			if n == self.cur:
+				img = ctrl_font.render(val,1,colors.RICH_GREEN)
+			else:
+				img = ctrl_font.render(val,1,colors.PALE_PURPLE)
+			img2 = ctrl_font.render(val,1,colors.BLACK)
 			x = (base.SCREEN_WIDTH-img.get_width())/2
 			screen.blit(img2,(x+2,y1+2))
 			screen.blit(img,(x,y1))
@@ -552,31 +509,23 @@ class About(engine.State):
 			y1 += 10
 			n += 1
 		
-		fnt = pygame.font.Font("BD_Cartoon_Shout.ttf",10)
+		copr_font = fonts.get("COPR")
 		y = 550
-		c = 29, 145, 3
-		#c = 0,150,100
 		for line in ["This game comes with ABSOLUTELY NO WARRANTY. It is free software and",
 		"you are welcome to distribute it under the terms of the GNU General Public License.",
 		"(C) The Bible Dave Development Team"]:
-			img = fnt.render(line,1,c)
-			img2 = fnt.render(line,1,bg)
-##			x = (base.SCREEN_WIDTH-img.get_width())/2
+			img = copr_font.render(line,1,colors.DARK_LIME_GREEN)
+			img2 = copr_font.render(line,1,colors.BLACK)
 			x = 10
 			screen.blit(img2,(x+2,y+2))
 			screen.blit(img,(x,y))
 			y += 12
-			
 		
-		fnt = pygame.font.Font("BD_Cartoon_Shout.ttf",10)
 		x,y = 405,10
-##		c = 36, 45, 126
-		c = 85,85,85
-		bg = 0,0,0
 		
 		info = "Bible Dave - Christian Coders Community project v%s" % base.VERSION
-		img = fnt.render(info,1,c)
-		img2 = fnt.render(info,1,bg)
+		img = copr_font.render(info,1,colors.DARK_GRAY)
+		img2 = copr_font.render(info,1,colors.BLACK)
 		screen.blit(img2,(x+1,y+1))
 		screen.blit(img,(x,y))
 
@@ -651,7 +600,7 @@ class Credits(engine.State):
 		self.zones = []
 
 	def paint(self,screen):
-		screen.fill((255,255,255))
+		screen.fill(colors.WHITE)
 		img = self.bkgr
 		img.set_alpha(128)
 		screen.blit(img,(0,0))
@@ -659,33 +608,28 @@ class Credits(engine.State):
 		screen.blit(self.sourceforgeLogo,(630,560))
 		screen.blit(self.pythonLogo,(730,560))
 		
-		bg = 0,0,0
-		
-		fnt = pygame.font.Font("BD_Cartoon_Shout.ttf",15)
-		fnt2 = pygame.font.Font("BD_Cartoon_Shout.ttf",26)
+		cred_font = fonts.get("CREDITS")
+		ctrl_font = fonts.get("CONTROL_CAPTION")
 
 		y = 25
-		fg = (0xaa,0x00,0x00)
-		score = 0
 		
 		self.zones = []
 		n = 0
 		for val in self.credits:
 			c = 0,0,0
-			img = fnt.render(val,1,c)
+			img = cred_font.render(val,1,c)
 			x = (base.SCREEN_WIDTH-img.get_width())/2
 			screen.blit(img,(x,y))
 			self.zones.append((n,pygame.Rect(x,y,img.get_width(),img.get_height())))
 			y += 15
-			#n += 1
 		
 		y1 = y + 30	
 		for val in self.menu:
-			c = 119,90,254
-			if n == self.cur: 
-				c = 63,185,0
-			img = fnt2.render(val,1,c)
-			img2 = fnt2.render(val,1,bg)
+			if n == self.cur:
+				img = ctrl_font.render(val,1,colors.RICH_GREEN)
+			else:
+				img = ctrl_font.render(val,1,colors.PALE_PURPLE)
+			img2 = ctrl_font.render(val,1,colors.BLACK)
 			x = (base.SCREEN_WIDTH-img.get_width())/2
 			screen.blit(img2,(x+2,y1+2))
 			screen.blit(img,(x,y1))
@@ -693,31 +637,23 @@ class Credits(engine.State):
 			y1 += 10
 			n += 1
 		
-		fnt = pygame.font.Font("BD_Cartoon_Shout.ttf",10)
+		copr_font = fonts.get("COPR")
 		y = 550
-		c = 29, 145, 3
-		#c = 0,150,100
 		for line in ["This game comes with ABSOLUTELY NO WARRANTY. It is free software and",
 		"you are welcome to distribute it under the terms of the GNU General Public License.",
 		"(C) The Bible Dave Development Team"]:
-			img = fnt.render(line,1,c)
-			img2 = fnt.render(line,1,bg)
-##			x = (base.SCREEN_WIDTH-img.get_width())/2
+			img = copr_font.render(line,1,colors.DARK_LIME_GREEN)
+			img2 = copr_font.render(line,1,colors.BLACK)
 			x = 10
 			screen.blit(img2,(x+2,y+2))
 			screen.blit(img,(x,y))
 			y += 12
 			
-		
-		fnt = pygame.font.Font("BD_Cartoon_Shout.ttf",10)
 		x,y = 405,10
-##		c = 36, 45, 126
-		c = 85,85,85
-		bg = 0,0,0
 		
 		info = "Bible Dave - Christian Coders Community project v%s" % base.VERSION
-		img = fnt.render(info,1,c)
-		img2 = fnt.render(info,1,bg)
+		img = copr_font.render(info,1,colors.DARK_GRAY)
+		img2 = copr_font.render(info,1,colors.BLACK)
 		screen.blit(img2,(x+1,y+1))
 		screen.blit(img,(x,y))
 
@@ -783,33 +719,27 @@ class Help(engine.State):
 		screen.blit(self.sourceforgeLogo,(630,560))
 		screen.blit(self.pythonLogo,(730,560))
 		
-		bg = 0,0,0
-		
-		fnt = pygame.font.Font("BD_Cartoon_Shout.ttf",15)
-		fnt2 = pygame.font.Font("BD_Cartoon_Shout.ttf",26)
+		help_font = fonts.get("HELP")
+		ctrl_font = fonts.get("CONTROL_CAPTION")
 
 		y = 240
-		fg = (0xaa,0x00,0x00)
-		score = 0
 		
 		self.zones = []
 		n = 0
 		for val in self.helpInfo:
-			c = 0,0,0
-			img = fnt.render(val,1,c)
+			img = help_font.render(val,1,colors.BLACK)
 			x = 250
 			screen.blit(img,(x,y))
 			self.zones.append((n,pygame.Rect(x,y,img.get_width(),img.get_height())))
 			y += 18
-			#n += 1
 			
 		y += 30
 		for val in self.menu:
-			c = 119,90,254
-			if n == self.cur: 
-				c = 63,185,0
-			img = fnt2.render(val,1,c)
-			img2 = fnt2.render(val,1,bg)
+			if n == self.cur:
+				img = ctrl_font.render(val,1,colors.RICH_GREEN)
+			else:
+				img = ctrl_font.render(val,1,colors.PALE_PURPLE)
+			img2 = ctrl_font.render(val,1,colors.BLACK)
 			x = (base.SCREEN_WIDTH-img.get_width())/2
 			screen.blit(img2,(x+2,y+2))
 			screen.blit(img,(x,y))
@@ -817,31 +747,23 @@ class Help(engine.State):
 			y += 10
 			n += 1
 		
-		fnt = pygame.font.Font("BD_Cartoon_Shout.ttf",10)
+		copr_font = fonts.get("COPR")
 		y = 550
-		c = 29, 145, 3
-		#c = 0,150,100
 		for line in ["This game comes with ABSOLUTELY NO WARRANTY. It is free software and",
 		"you are welcome to distribute it under the terms of the GNU General Public License.",
 		"(C) The Bible Dave Development Team"]:
-			img = fnt.render(line,1,c)
-			img2 = fnt.render(line,1,bg)
-##			x = (base.SCREEN_WIDTH-img.get_width())/2
+			img = copr_font.render(line,1,colors.DARK_LIME_GREEN)
+			img2 = copr_font.render(line,1,colors.BLACK)
 			x = 10
 			screen.blit(img2,(x+2,y+2))
 			screen.blit(img,(x,y))
 			y += 12
 			
-		
-		fnt = pygame.font.Font("BD_Cartoon_Shout.ttf",10)
 		x,y = 405,10
-##		c = 36, 45, 126
-		c = 85,85,85
-		bg = 0,0,0
 		
 		info = "Bible Dave - Christian Coders Community project v%s" % base.VERSION
-		img = fnt.render(info,1,c)
-		img2 = fnt.render(info,1,bg)
+		img = copr_font.render(info,1,colors.DARK_GRAY)
+		img2 = copr_font.render(info,1,colors.BLACK)
 		screen.blit(img2,(x+1,y+1))
 		screen.blit(img,(x,y))
 

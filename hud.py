@@ -9,9 +9,9 @@ from pgu import tilevid, timer
 from math import pi
 from base import loadImage
 import time
+import colors
 
-
-INITIAL_TEXT_ALPHA = 191
+INITIAL_TEXT_ALPHA = colors.GRAY
 MAX_DIALOG_PENDING_TIME = 7
 MAX_MSG_MARKER_TIME = base.FPS * 2.5
 
@@ -116,17 +116,20 @@ class HUD:
 		surface.set_clip((cipos,(self.courageImg.get_width()*cpercent,self.courageImg.get_height())))
 		surface.blit(self.courageImg, cipos)
 		surface.set_clip()
-		base.drawText (surface, 10, str(int(cpercent*100)) + "%", cipos)
+		health_font = fonts.get("HUD_HEALTH")
+		health_txt = health_font.render(str(int(cpercent*100)) + "%", 1, colors.GRAY)
+		surface.blit(health_txt, cipos)
 
-		#pygame.draw.arc(surface, (255,255,255), (0,0,100,100), 0, pi, 3)
-
-		#base.drawText (surface, 20, "Press ESC to pause", (20, 20))
 		x = 15
-		base.drawText (surface, 28, str(self.vid.num_bibles), (x, h-h/7))
+		bible_font = fonts.get("HUD_BIBLE_VAL")
+		bible_txt = bible_font.render(str(self.vid.num_bible), 1, colors.GRAY)
+		surface.blit(bible_txt, (x, h-h/7))
 		surface.blit (self.vid.images['bible'][0], (x,h-h/8+25))
 		
 		x += 55
-		base.drawText (surface, 28, str(base.numBananas), (x, h-h/7))
+		banana_font = fonts.get("HUD_BANANA_VAL")
+		banana_txt = banana_font.render(str(base.numBananas), 1, colors.GRAY)
+		surface.blit(banana_txt, (x, h-h/7))
 		surface.blit (self.vid.images['bananas'][0], (x,h-h/8+25))
 		
 
@@ -166,8 +169,9 @@ class HUD:
 					## Trim off the special character
 					if (draw_text[0] == '\t'):
 						draw_text = draw_text[1: len(draw_text)]
-
-				base.drawTextColored (surface, 24, draw_text, (w/8, (h-h/4) + (line_num - min) * 30), (self.drawTextColor, self.drawTextColor, self.drawTextColor))
+				hud_font = fonts.get("HUD")
+				hud_txt = hud_font.render(draw_text, 1, (self.drawTextColor,self.drawTextColor,self.drawTextColor))
+				surface.blit(hud_txt, (w/8, (h-h/4) + (line_num - min) * 30))
 
 			if (self.vid.paused):
 				# If we are waiting for the user to press a key...
@@ -178,12 +182,6 @@ class HUD:
 						self.press_any_key_color = 127
 
 					drawColor = (self.press_any_key_color, self.press_any_key_color, self.press_any_key_color)
-
-					# This code makes it fade in and out if the above code is set to cycle it between 0 and 255.
-	#				if (self.press_any_key_color > 127):
-	#					drawColor = (255 - self.press_any_key_color, 255 - self.press_any_key_color, 255 - self.press_any_key_color)
-					#MAYO: no message at the bottom
-					base.drawTextColored (surface, 12, "", (w/8, (h-h/4) + (4) * 30 + 6), drawColor)
 				else:
 					self.press_any_key_color = 0				
 
@@ -298,10 +296,6 @@ class HUD:
 		
 		# Now that we have prepared our message, we get all of the words split (we'll recombine below)
 		words = m.split(' ')
-
-		#print "Message =", message
-		#print "m =", m
-		#print "words =", words
 
 		while(len(words) > 0): # Continue processing until we have no more words to process
 			lineDone = False
