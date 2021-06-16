@@ -19,7 +19,7 @@ import gettext
 class Menu(engine.State):
 	def __init__(self,main):
 		self.main = main
-		music.LoadMusic()
+		music.Load()
 		
 	def init(self):
 		pygame.mouse.set_visible(True)
