@@ -301,6 +301,7 @@ class Options(engine.State):
 			if val == "music on/off":
 				if music.enabled:
 					music.enabled = False
+					music.Stop()
 				else:
 					music.enabled = True
 			if val == "sounds on/off":

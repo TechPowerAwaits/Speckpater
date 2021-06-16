@@ -41,3 +41,6 @@ def Play(song_alias):
 			pygame.mixer.music.load(alias[song_alias])
 			pygame.mixer.music.play(-1)
 			current = song_alias
+
+def Stop():
+	pygame.mixer.music.fadeout(1800)
