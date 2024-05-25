@@ -227,12 +227,10 @@ class Player(Sprite):
 			joy["right"] = base.joy.get_axis(0) > 0.1
 			joy["one"] = base.joy.get_button(0)
 			joy["two"] = base.joy.get_button(1)
-			joy["twelve"] = base.joy.get_button(11) #'A' button on Xbox 360 controller with MacOSX driver
-			#joy["thirteen"] = base.joy.get_button(12)
-			#print joy["twelve"]
+			if base.joy.get_numbuttons() > 11:
+				joy["twelve"] = base.joy.get_button(11) #'A' button on Xbox 360 controller with MacOSX driver
 		
 		self.upOrDownKeys = keys[K_DOWN] or keys[K_UP] or joy["down"] or joy["up"]
-		#self.upOrDownKeys = keys[K_DOWN] or keys[K_UP]
 		prevState = self.state
 		
 		if keys[K_m]:
@@ -285,7 +283,6 @@ class Player(Sprite):
 			self.state = STAND
 			
 		if((keys[K_t] or joy["one"]) and self.actionTimer == 0 and base.numBananas > 0):
-		#if (keys[K_t] and self.actionTimer == 0 and base.numBananas > 0):
 			base.numBananas -= 1
 			s = items.Banana(game, self.rect)
 			game.sprites.append(s)
@@ -298,8 +295,6 @@ class Player(Sprite):
 			self.actionTimer -= 1
 
 		if ((keys[K_SPACE] or joy["two"] or joy["twelve"]) and self.jumpAllowed and (((self.on_ground == 1) and (self.state != JUMP)) or (self.state == CLIMB))):
-			 
-		#if (keys[K_SPACE] and self.jumpAllowed and (((self.on_ground == 1) and (self.state != JUMP)) or (self.state == CLIMB))):
 			self.jumpAllowed = False
 			self.dy = -JUMP_SPEED
 			self.state = JUMP
@@ -309,7 +304,6 @@ class Player(Sprite):
 				self.dy = self.dy * 4 / 5
 		
 		if not (keys[K_SPACE] or joy["two"]):
-		#if not keys[K_SPACE]:
 			self.jumpAllowed = True
 	
 		## We check to see if we're trying to walk in one direction or another
