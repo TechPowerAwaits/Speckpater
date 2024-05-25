@@ -72,7 +72,7 @@ class GameLevel(gamelevel4_x.GameLevel, Tileset):
 					g.player.puzzleFinished = 1
 					if base.SOUND:
 						base.sound.Play("click")
-					g.hud.add_pending_dialog(_("*Interesting way to keep people from getting out."));
+					g.hud.add_pending_dialog(A_("*Interesting way to keep people from getting out."));
 					g.quake = 75
 					self.OnPuzzleSolved(g)
 				else:
@@ -88,7 +88,7 @@ class GameLevel(gamelevel4_x.GameLevel, Tileset):
 	def OnRunSpecial7(self, g, t, a):
 		def special_hit7(g, s, a):
 			if (g.player.puzzleFinished == 0):
-				g.hud.add_pending_dialog(_("""These blocks are in my way...\nthere's got to be some trick to getting past them."""));
+				g.hud.add_pending_dialog(A_("""These blocks are in my way...\nthere's got to be some trick to getting past them."""));
 			s.agroups = None	## Remove the groups from colliding with this object in the future
 		
 		s = tilevid.Sprite(g.images['blank'],t.rect)
@@ -118,7 +118,7 @@ class GameLevel(gamelevel4_x.GameLevel, Tileset):
 	def Click(self, g):
 		if base.SOUND:
 			base.sound.Play("click")
-		g.hud.show_dialog(_("*Click*"))
+		g.hud.show_dialog(A_("*Click*"))
 
 	def Clunk(self, g):
 		self.clunkCounter += 1
@@ -126,24 +126,24 @@ class GameLevel(gamelevel4_x.GameLevel, Tileset):
 		if base.SOUND:
 			base.sound.Play("clunk")
 		if (self.clunkCounter == 7):
-			g.hud.add_pending_dialog(_("*Clunk*\n\t""I can't help thinking that these clunks\nare messing things up."""))
+			g.hud.add_pending_dialog(A_("*Clunk*\n\t""I can't help thinking that these clunks\nare messing things up."""))
 		elif (self.clunkCounter == 14):
-			g.hud.add_pending_dialog(_("*Clunk*\n\t""Maybe there's an order I should be\nstepping on these things in."""))
+			g.hud.add_pending_dialog(A_("*Clunk*\n\t""Maybe there's an order I should be\nstepping on these things in."""))
 		elif (self.clunkCounter == 21):
-			g.hud.add_pending_dialog(_("*Clunk*\n\t""I bet if I jumped over some plates and\nstepped on other ones instead, I could get\nmore to click into place."""))
+			g.hud.add_pending_dialog(A_("*Clunk*\n\t""I bet if I jumped over some plates and\nstepped on other ones instead, I could get\nmore to click into place."""))
 		elif (self.clunkCounter == 28):
-			g.hud.add_pending_dialog(_("*Clunk*\n\t""I think I should start with that first\none that clicks, and then try to find\nthe next one to step on to make it click."""))
+			g.hud.add_pending_dialog(A_("*Clunk*\n\t""I think I should start with that first\none that clicks, and then try to find\nthe next one to step on to make it click."""))
 		elif (self.clunkCounter == 35):
-			g.hud.add_pending_dialog(_("*Clunk*\n\t""Those clunks are starting to get on my nerves. Maybe I need to get all clicks?"""))
+			g.hud.add_pending_dialog(A_("*Clunk*\n\t""Those clunks are starting to get on my nerves. Maybe I need to get all clicks?"""))
 		elif (self.clunkCounter == 42):
-			g.hud.show_dialog(_("*Clunk*\n\t""Is this really getting me anywhere?"""))
+			g.hud.show_dialog(A_("*Clunk*\n\t""Is this really getting me anywhere?"""))
 		elif (self.clunkCounter == 49):
-			g.hud.add_pending_dialog(_("*Clunk*\n\t""Okay Dave. Let's check our Fruit status...\n\tlove...\tgood.\n\tjoy...\tgood.\n\tpeace...\t...\tacceptable\n\tpatience...\t...\t...\t...\t...I think\nI've just about lost all my available patience."""))
+			g.hud.add_pending_dialog(A_("*Clunk*\n\t""Okay Dave. Let's check our Fruit status...\n\tlove...\tgood.\n\tjoy...\tgood.\n\tpeace...\t...\tacceptable\n\tpatience...\t...\t...\t...\t...I think\nI've just about lost all my available patience."""))
 		elif (self.clunkCounter == 56):
-			g.hud.show_dialog(_("*Clunk*\n\t""Are we ever going to get out of here?"""))
+			g.hud.show_dialog(A_("*Clunk*\n\t""Are we ever going to get out of here?"""))
 			self.clunkCounter = 0
 		else:
-			g.hud.show_dialog(_("*Clunk*"))
+			g.hud.show_dialog(A_("*Clunk*"))
 
 	def OnPuzzleSolved(self, game):
 		self.removeBlocks(self.blocksToDestroy)

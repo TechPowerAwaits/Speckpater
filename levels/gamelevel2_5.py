@@ -15,7 +15,7 @@ class GameLevel(gamelevel2_x.GameLevel):
 
 	def OnRunSpecial4(self, g, t, a):
 		def special_hit(g, s, a):
-			g.hud.add_pending_dialog(_("The sign reads:\n\t\"<--- Mine exit\""));
+			g.hud.add_pending_dialog(A_("The sign reads:\n\t\"<--- Mine exit\""));
 			s.agroups = None
 		s = tilevid.Sprite(g.images['blank'],t.rect)
 		g.sprites.append(s)
@@ -24,7 +24,7 @@ class GameLevel(gamelevel2_x.GameLevel):
 
 	def OnRunSpecial5(self, g, t, a):
 		def special_hit(g, s, a):
-			g.hud.add_pending_dialog(_("The sign reads:\n\t\"To mine exit --->\""));
+			g.hud.add_pending_dialog(A_("The sign reads:\n\t\"To mine exit --->\""));
 			s.agroups = None
 		s = tilevid.Sprite(g.images['blank'],t.rect)
 		g.sprites.append(s)
@@ -33,7 +33,7 @@ class GameLevel(gamelevel2_x.GameLevel):
 
 	def OnRunSpecial6(self, g, t, a):
 		def special_hit(g, s, a):
-			g.hud.show_dialog(_("The sign reads:\n\t\"PROCEED WITH CAUTION: Dangerous mines ahead.\""));
+			g.hud.show_dialog(A_("The sign reads:\n\t\"PROCEED WITH CAUTION: Dangerous mines ahead.\""));
 			s.agroups = None
 		s = tilevid.Sprite(g.images['blank'],t.rect)
 		g.sprites.append(s)
@@ -42,7 +42,6 @@ class GameLevel(gamelevel2_x.GameLevel):
 
 	def OnRunSpecial7(self, g, t, a):
 		def special_hit(g, s, a):
-			#g.hud.show_dialog(_("The sign reads:\n\t\"DANGER: Last chance to turn back!\""));
 			s.agroups = None
 		s = tilevid.Sprite(g.images['blank'],t.rect)
 		g.sprites.append(s)
@@ -52,7 +51,6 @@ class GameLevel(gamelevel2_x.GameLevel):
 	# Trigger #8 will eventually be the one that kicks the player out to the series of extra-difficult cave levels.
 	def OnRunSpecial8(self, g, t, a):
 		def special_hit(g, s, a):
-			#g.hud.show_dialog(_("\"I've got an uneasy feeling about this...\""));
 			self.gotoNextLevel()
 		s = tilevid.Sprite(g.images['blank'],t.rect)
 		g.sprites.append(s)

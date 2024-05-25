@@ -12,7 +12,7 @@ class GameLevel(gamelevel5_x.GameLevel, Tileset):
 	
 	def OnRunSpecial1(self, g, t, a):
 		def trigger(g, s, a):
-			g.hud.add_pending_dialog(_("""\"Another Bible for the lost, thank you Jesus!\"
+			g.hud.add_pending_dialog(A_("""\"Another Bible for the lost, thank you Jesus!\"
 			Hmmm there seems to be bit dirt on this text... There now it's clean!
 			Psalm 118, verse 22,  'The stone which the builders refused is
 			'become the head stone of the corner.'
@@ -23,7 +23,7 @@ class GameLevel(gamelevel5_x.GameLevel, Tileset):
 		
 	def OnRunSpecial2(self, g, t, a):
 		def trigger(g, s, a):
-			g.hud.show_dialog(_("\"Wow slippy rock!\""))
+			g.hud.show_dialog(A_("\"Wow slippy rock!\""))
 			s.agroups = None
 
 		self.addTriggerCallback(t.rect,trigger)

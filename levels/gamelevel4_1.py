@@ -20,7 +20,7 @@ class GameLevel(gamelevel3_x.GameLevel, Tileset):
 		
 	def OnRunSpecial1(self, g, t, a):
 		def trigger(g, s, a):
-			g.hud.add_pending_dialog(_("\"Hmm I wonder how I'm going to get across from here.\nMaybe I should climb to that tree branch.\""))
+			g.hud.add_pending_dialog(A_("\"Hmm I wonder how I'm going to get across from here.\nMaybe I should climb to that tree branch.\""))
 			s.agroups = None	## Remove the groups from colliding with this object in the future	
 
 		self.addTriggerCallback(t.rect,trigger)
@@ -28,7 +28,7 @@ class GameLevel(gamelevel3_x.GameLevel, Tileset):
 	def OnRunSpecial2(self, g, t, a):
 		def trigger(g, s, a):
 			if not g.isSaid:
-				self.hud.show_dialog(_("\"The jump is too long!\""))
+				self.hud.show_dialog(A_("\"The jump is too long!\""))
 				g.isSaid = True
 			s.agroups = None
 
@@ -40,7 +40,7 @@ class GameLevel(gamelevel3_x.GameLevel, Tileset):
 	def OnRunSpecial3(self, g, t, a):
 		def trigger(g, s, a):
 			if self.puzzleFinished != 1:
-				g.hud.add_pending_dialog(_("\"This wall is in the way. How am I going to get around it?\"\n\"I wonder if I need to move something or flip a switch?\""))
+				g.hud.add_pending_dialog(A_("\"This wall is in the way. How am I going to get around it?\"\n\"I wonder if I need to move something or flip a switch?\""))
 			s.agroups = None	## Remove the groups from colliding with this object in the future	
 		self.addTriggerCallback(t.rect,trigger)
 
@@ -48,7 +48,7 @@ class GameLevel(gamelevel3_x.GameLevel, Tileset):
 		self.appendTileFromTrigger(self.blocksToDestroy,t)
 		def special_hit4(g, s, a):
 			if (self.puzzleFinished == 1):
-				g.hud.add_pending_dialog(_("\"It looks like someone doesn't want people going in here."));
+				g.hud.add_pending_dialog(A_("\"It looks like someone doesn't want people going in here."));
 				g.quake = 50
 				
 
@@ -63,7 +63,7 @@ class GameLevel(gamelevel3_x.GameLevel, Tileset):
 			self.OnPuzzleSolved(g)
 			if base.SOUND:
 					base.sound.Play("click")
-			g.hud.add_pending_dialog(_("""Aha! So that's how you get through!"""));
+			g.hud.add_pending_dialog(A_("""Aha! So that's how you get through!"""));
 			s.agroups = None	## Remove the groups from colliding with this object in the future
 		
 		s = tilevid.Sprite(g.images['blank'],t.rect)
@@ -73,7 +73,7 @@ class GameLevel(gamelevel3_x.GameLevel, Tileset):
 		
 	def OnRunSpecial6(self, g, t, a):
 		def trigger(g, s, a):
-			g.hud.add_pending_dialog(_("\"It looks like someone doesn't want people going in here."));
+			g.hud.add_pending_dialog(A_("\"It looks like someone doesn't want people going in here."));
 			g.quake = 50
 			s.agroups = None	## Remove the groups from colliding with this object in the future	
 
@@ -100,7 +100,7 @@ class GameLevel(gamelevel3_x.GameLevel, Tileset):
 	def Click(self, g):
 		if base.SOUND:
 			base.sound.Play("click")
-		g.hud.show_dialog(_("*Click*"))
+		g.hud.show_dialog(A_("*Click*"))
 
 	def Clunk(self, g):
 		self.clunkCounter += 1

@@ -26,7 +26,7 @@ class GameLevel(gamelevel3_x.GameLevel, Tileset):
 		self.sprites.append(s)
 		
 	def OnStart(self):
-		self.hud.show_dialog(_("""Watch out for falling bridge pieces!"""))
+		self.hud.show_dialog(A_("""Watch out for falling bridge pieces!"""))
 	
 	def OnRunSpecial1(self, g, t, a):
 		def special_hit1(g, s, a):

@@ -81,24 +81,23 @@ def initLocalization(settings):
 	localeDir = os.path.join(os.getcwd(),'locales')
 	
 	curLang = settings['lang']
-	
-	#gettext.bindtextdomain('bibledave', localeDir )
-	#gettext.textdomain('bibledave')
-	#gettext.install('bibledave', localeDir)
-	# print gettext.textdomain(),gettext.bindtextdomain('bibledave')
-	
+	if not curLang in languages:
+		print curLang + " is not supported"
+		print "Falling back to English"
+		curLang = "English"
+	if curLang != "English":
+		langCode = [languages[curLang]]
+		localeFile = gettext.find('bibledave', localeDir, langCode)
+		if localeFile == None:
+			print "No language file found for language",curLang
+			print "Falling back to English"
+		else:
+			t_obj = gettext.translation('bibledave', localeDir, langCode)
+			global A_
+			A_ = t_obj.gettext
 
-	language = [languages[curLang]]
-	
-	l = gettext.find('bibledave', localeDir, language)
-	if l == None:
-		raise "No language file found for language",curLang
 
-	t = gettext.translation('bibledave', localeDir, language)
-	t.install()
 
-	
-	
 # helper function
 def getFullScreenFlag(settings):
 		return (0,pygame.FULLSCREEN)[int(settings['fullScreen'])]

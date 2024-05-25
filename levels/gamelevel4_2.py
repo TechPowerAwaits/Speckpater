@@ -18,7 +18,6 @@ class GameLevel(gamelevel4_x.GameLevel, Tileset):
 	
 	def OnRunSpecial1(self, g, t, a):
 		def special_hit1(g, s, a):
-			#g.hud.show_dialog(_("\"Wow, a hidden passage!\""));
 			s.agroups = None	## Remove the groups from colliding with this object in the future
 		
 		s = tilevid.Sprite(g.images['blank'],t.rect)
@@ -34,7 +33,7 @@ class GameLevel(gamelevel4_x.GameLevel, Tileset):
 	def OnRunSpecial2(self, g, t, a):
 		def trigger(g, s, a):
 			g.quake = 25
-			g.hud.add_pending_dialog(_("\"What's that noise? Sounds like a huge rolling stone.\""));
+			g.hud.add_pending_dialog(A_("\"What's that noise? Sounds like a huge rolling stone.\""));
 			s.agroups = None	## Remove the groups from colliding with this object in the future
 			self.launchStone((29,7), -5)
 

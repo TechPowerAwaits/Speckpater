@@ -9,7 +9,7 @@ class GameLevel(gamelevel2_x.GameLevel):
 	
 	def OnStart(self):
 		self.hit_ground = 0
-		self.hud.show_dialog(_("\"...aaaaAAAAH!\""));
+		self.hud.show_dialog(A_("\"...aaaaAAAAH!\""));
 
 	def OnRunSpecial1(self, g, t, a):
 		def special_hit1(g, s, a):
@@ -26,9 +26,7 @@ class GameLevel(gamelevel2_x.GameLevel):
 
 	def OnRunSpecial2(self, g, t, a):
 		def special_hit(g, s, a):
-			g.hud.add_pending_dialog(_("\"This looks like a mine... or maybe a cave...\""));
-			#a.dx = 4 # kick the player to the right a bit when this happens			
-			#g.quake = 200
+			g.hud.add_pending_dialog(A_("\"This looks like a mine... or maybe a cave...\""));
 			s.agroups = None
 
 		s = tilevid.Sprite(g.images['blank'],t.rect)
@@ -39,8 +37,6 @@ class GameLevel(gamelevel2_x.GameLevel):
 
 	def OnRunSpecial3(self, g, t, a):
 		def special_hit(g, s, a):
-			#g.hud.show_dialog(_("\"It's stopped.\n\tI think that must have been a landslide,\nthe cave entrance looks closed off now.\n\tI'll just have to find another way out.\""));
-			g.quake = 0
 			s.agroups = None
 
 		s = tilevid.Sprite(g.images['blank'],t.rect)
@@ -50,5 +46,5 @@ class GameLevel(gamelevel2_x.GameLevel):
 
 
 	def OnExit(self):
-		self.hud.show_dialog(_("\"This passage looks good, even if it's the only one... I'll keep going.\""));
+		self.hud.show_dialog(A_("\"This passage looks good, even if it's the only one... I'll keep going.\""));
 		self.gotoNextLevel()
